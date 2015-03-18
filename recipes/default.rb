@@ -28,9 +28,9 @@ end
 template "/etc/mongod.conf" do
   source "mongod.conf.erb"
   user "mongodb"
-  variable({
+  variables({
     auth: node.mongodb["config"]["auth"],
-    bind_ip: node.mongodb["config"]["bind_ip"],
+    bind_ip: node.mongodb["config"]["bind_ip"]
   })
   notifies :restart, "service[mongod]"
 end
