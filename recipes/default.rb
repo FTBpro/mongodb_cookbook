@@ -25,6 +25,8 @@ mongodb_admin_user node.mongodb["admin"]["username"] do
   roles node.mongodb["admin"]["roles"]
 end
 
+service "mongod"
+
 template "/etc/mongod.conf" do
   source "mongod.conf.erb"
   user "mongodb"
