@@ -1,23 +1,16 @@
 mongodb Cookbook
 ================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This recipe installs the latest MongoDB package from Ubuntu's apt repository.
+It will also create an admin user on the database.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+apt cookbook
 
-e.g.
-#### packages
-- `toaster` - mongodb needs toaster to brown your bagel.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### mongodb::default
 <table>
   <tr>
@@ -27,19 +20,26 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['mongodb']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['mongodb']['admin_user']['username']</tt></td>
+    <td>String</td>
+    <td>Username for the admin user</td>
+    <td><tt>blank</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['mongodb']['admin_user']['password']</tt></td>
+    <td>String</td>
+    <td>Password for the admin user</td>
+    <td><tt>blank</tt></td>
   </tr>
 </table>
+
+NOTE: You can also upload a databag called "mongodb" with a "admin_user" item
+which has username and password fields. If you choose this way there is no need
+to override the default attributes.
 
 Usage
 -----
 #### mongodb::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
 Just include `mongodb` in your node's `run_list`:
 
 ```json
@@ -53,9 +53,6 @@ Just include `mongodb` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +62,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Erez Rabih
