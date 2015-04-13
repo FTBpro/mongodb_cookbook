@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'apt'
+include_recipe 'apt::default'
 
 apt_repository 'mongodb' do
   uri "http://downloads-distro.mongodb.org/repo/ubuntu-upstart"
