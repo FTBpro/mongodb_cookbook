@@ -18,14 +18,13 @@ apt_repository 'mongodb' do
   action :add
 end
 
-
 %w{mongodb-org make build-essential}.each do |p|
   package p do
     action :nothing
   end.run_action(:install)
 end
 
-chef_gem "mongo"
+gem_package "mongo"
 
 mongodb_admin_user node.mongodb["admin"]["username"] do
   password node.mongodb["admin"]["password"]
