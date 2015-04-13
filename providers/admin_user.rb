@@ -4,8 +4,13 @@ def add_admin(username, password, roles = [], database)
 
   connection = retrieve_db
   db = connection.db(database)
-  db.add_user(username, password, false, :roles => roles)
-  Chef::Log.info("Created or updated user #{username} on #{database}")
+  begin
+    db.authenticate(username, password)
+    Chef::Log.info("User #{username} aleady exists")
+  rescue Mongo::AuthenticationError
+    db.add_user(username, password, false, :roles => roles)
+    Chef::Log.info("Created or updated user #{username} on #{database}")
+  end
 end
 
 # Get the MongoClient connection
