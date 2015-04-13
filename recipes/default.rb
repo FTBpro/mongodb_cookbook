@@ -32,6 +32,8 @@ end
 mongodb_admin_user node.mongodb["admin"]["username"] do
   password node.mongodb["admin"]["password"]
   roles node.mongodb["admin"]["roles"]
+  retries 5
+  retry_delay 20
 end
 
 service "mongod"
