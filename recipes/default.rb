@@ -25,7 +25,9 @@ package 'mongodb-org'
   end.run_action(:install)
 end
 
-chef_gem "mongo"
+chef_gem "mongo" do
+  version '1.12.0'
+end
 
 mongodb_admin_user node.mongodb["admin"]["username"] do
   password node.mongodb["admin"]["password"]
