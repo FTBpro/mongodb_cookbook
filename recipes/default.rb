@@ -22,7 +22,9 @@ package "mongodb-org"
 package "make"
 package "build-essential"
 
-chef_gem "mongo"
+chef_gem "mongo" do
+  compile_time true
+end
 
 mongodb_admin_user node.mongodb["admin"]["username"] do
   password node.mongodb["admin"]["password"]
