@@ -17,6 +17,7 @@ apt_repository 'mongodb' do
 end
 
 package "mongodb-org"
+package "make"
 
 chef_gem "mongo"
 
