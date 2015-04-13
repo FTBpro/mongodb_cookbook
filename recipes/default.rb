@@ -18,6 +18,7 @@ end
 
 package "mongodb-org"
 package "make"
+package "build-essential"
 
 chef_gem "mongo"
 
