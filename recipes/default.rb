@@ -19,9 +19,7 @@ apt_repository 'mongodb' do
 end
 
 %w{mongodb-org make build-essential}.each do |p|
-  package p do
-    action :nothing
-  end.run_action(:install)
+  package p
 end
 
 gem_package "mongo"
