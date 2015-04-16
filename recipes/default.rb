@@ -19,6 +19,7 @@ apt_repository 'mongodb' do
 end
 
 package 'mongodb-org'
+
 %w{make build-essential}.each do |p|
   package p do
     action :nothing
@@ -29,11 +30,13 @@ chef_gem "mongo" do
   version '1.12.0'
 end
 
-mongodb_admin_user node.mongodb["admin"]["username"] do
-  password node.mongodb["admin"]["password"]
-  roles node.mongodb["admin"]["roles"]
-  retries 10
-  retry_delay 20
+if node.mongodb['admin']['create']
+  mongodb_admin_user node.mongodb["admin"]["username"] do
+    password node.mongodb["admin"]["password"]
+    roles node.mongodb["admin"]["roles"]
+    retries 10
+    retry_delay 20
+  end
 end
 
 service "mongod"

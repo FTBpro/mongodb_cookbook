@@ -1,6 +1,8 @@
 default['mongodb']['config']['auth'] = true
 default['mongodb']['config']['bind_ip'] = "0.0.0.0"
 
+default.mongod['admin']['create'] = true
+
 admin_user = 
   begin
     Chef::DataBagItem.load("mongodb", "admin_user")
