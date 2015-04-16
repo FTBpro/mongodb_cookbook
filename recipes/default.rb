@@ -18,7 +18,9 @@ apt_repository 'mongodb' do
   action :add
 end
 
-package 'mongodb-org'
+package 'mongodb-org' do
+  action :install
+end
 
 %w{make build-essential}.each do |p|
   package p do
